@@ -21,8 +21,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Initialize database schema and verify root tables
-db.init_db()
+# Initialize database schema once per application runtime
+@st.cache_resource
+def bootstrap_system():
+    db.init_db()
+    return True
+
+bootstrap_system()
 
 # Modern B2B SaaS Enterprise styling and immutable author attribution
 st.markdown("""

@@ -156,36 +156,42 @@ def init_db():
         )
     """)
 
-    # --- Initial Seed: Default Hotel & Root Admin ---
-    cursor.execute("SELECT COUNT(*) FROM hotels")
-    if cursor.fetchone()[0] == 0:
-        cursor.execute("INSERT INTO hotels (hotel_name, hotel_code, currency) VALUES ('Grand Resort & Spa', 'GR01', 'AZN')")
-        default_hotel_id = cursor.lastrowid
-        
-        # We import hash_password here or use a standard sha256/bcrypt
-        import bcrypt
-        salt = bcrypt.gensalt()
-        admin_pwd_hash = bcrypt.hashpw(b"admin123", salt).decode('utf-8')
-        
-        cursor.execute("""
-            INSERT INTO users (hotel_id, username, password_hash, full_name, role)
-            VALUES (?, 'admin', ?, 'General Manager', 'admin')
-        """, (default_hotel_id, admin_pwd_hash))
+    # --- Initial Seed: Default Hotel & Root Admin (Concurrency-Safe) ---
+    cursor.execute("""
+        INSERT OR IGNORE INTO hotels (id, hotel_name, hotel_code, currency)
+        VALUES (1, 'Grand Resort & Spa', 'GR01', 'AZN')
+    """)
 
-        # Default Surcharges for the property
+    cursor.execute("SELECT id FROM hotels WHERE hotel_code = 'GR01'")
+    h_row = cursor.fetchone()
+    if h_row:
+        default_hotel_id = h_row[0]
+
+        # Check and seed default root manager
+        cursor.execute("SELECT id FROM users WHERE username = 'admin'")
+        if not cursor.fetchone():
+            import bcrypt
+            salt = bcrypt.gensalt()
+            admin_pwd_hash = bcrypt.hashpw(b"admin123", salt).decode('utf-8')
+            cursor.execute("""
+                INSERT OR IGNORE INTO users (hotel_id, username, password_hash, full_name, role)
+                VALUES (?, 'admin', ?, 'General Manager', 'admin')
+            """, (default_hotel_id, admin_pwd_hash))
+
+        # Default surcharges
         rules = [
             (default_hotel_id, 'kids_0_6_second', 'Daily surcharge for 2nd child (0-6 yrs)', 47.5),
             (default_hotel_id, 'kids_6_12', 'Daily surcharge for child (6-12 yrs)', 47.5),
             (default_hotel_id, 'above_12', 'Daily surcharge for extra guest (12+ yrs)', 47.5)
         ]
-        cursor.executemany("INSERT INTO pricing_rules (hotel_id, rule_key, title, price) VALUES (?, ?, ?, ?)", rules)
+        cursor.executemany("INSERT OR IGNORE INTO pricing_rules (hotel_id, rule_key, title, price) VALUES (?, ?, ?, ?)", rules)
 
-        # Default Channels
+        # Default booking channels
         channels = [
             (default_hotel_id, 'Direct / Self-Pay', 1, 0),
             (default_hotel_id, 'Corporate Voucher', 0, 1)
         ]
-        cursor.executemany("INSERT INTO guest_types (hotel_id, name, is_payable, require_serial) VALUES (?, ?, ?, ?)", channels)
+        cursor.executemany("INSERT OR IGNORE INTO guest_types (hotel_id, name, is_payable, require_serial) VALUES (?, ?, ?, ?)", channels)
 
     conn.commit()
     conn.close()
