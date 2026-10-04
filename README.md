@@ -1,4 +1,4 @@
-# 🏨 Enterprise Multi-Tenant Hotel Property Management System (HMS)
+# 🏨 Enterprise Multi-Tenant Hotel Property Management System (PMS)
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework-Streamlit](https://img.shields.io/badge/Framework-Streamlit-FF4B4B.svg)](https://streamlit.io/)
@@ -6,7 +6,7 @@
 [![Tests-Pytest%20Passing](https://img.shields.io/badge/Tests-Pytest%20Passing-success.svg)](https://docs.pytest.org/)
 [![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
 
-> Designed and engineered by **Habib Qasimzade**  
+> Designed and engineered by **Həbib Qasımzadə**  
 > *Translating real-world hospitality domain expertise into an enterprise-grade cloud operating system.*
 
 ---
@@ -15,7 +15,7 @@
 
 Small-to-midsize accommodation providers and resort properties frequently struggle with fragmented software stacks: disjointed spreadsheets for billing, uncoordinated communication with housekeeping teams, and vulnerability to double-booking (overbooking) anomalies during peak walk-in and OTA arrival hours.
 
-Drawing from hands-on front desk operational experience, this **Hotel Property Management System (HMS)** was engineered from the ground up to address these pain points. Built on a strict multi-tenant architecture, the platform enforces atomic reservation transactions, provides dynamic single vs. double occupancy rate engines, automates room turnover protocols, and computes executive-level hospitality decision metrics (**ADR, RevPAR, Real-Time Occupancy**).
+Drawing from hands-on front desk operational experience, this **Hotel Property Management System (PMS)** was engineered from the ground up to address these pain points. Built on a strict multi-tenant architecture, the platform enforces atomic reservation transactions, provides dynamic single vs. double occupancy rate engines, automates room turnover protocols, and computes executive-level hospitality decision metrics (**ADR, RevPAR, Real-Time Occupancy**).
 
 ---
 
@@ -132,27 +132,38 @@ erDiagram
         string status
         datetime created_at
     }
-   
-🛠️ Technology Stack
-Layer              Technology                Purpose   
-Frontend & UI      Streamlit                 Responsive, high-velocity SaaS dashboard interface 
-Application Logic  Python 3.10+              Core domain logic, tariff calculators, routing
-Data Storage       SQLite (PostgreSQL Ready) Relational persistence with immediate transaction locking
-Security & Auth    bcrypt                    Salted cryptographical password hashing
-Analytics Engine   Plotly Express & Pandas   Capacity utilization and revenue distribution charting
-Reporting & Export OpenPyXL                  Compliant dual-report .xlsx binary data generation
-Quality Assurance  Pytest                    Automated mathematical unit tests for collisions and tariffs
+```
 
-🚀 Quickstart & Local Installation
-Prerequisites:
-Python 3.10 or higher
-Git
+---
 
-1. Clone the Repository
-git clone [https://github.com/](https://github.com/)<habibqasimzade>/hotel-hms-enterprise.git
+## 🛠️ Technology Stack
+
+| Layer | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Frontend & UI** | Streamlit | Responsive, high-velocity SaaS dashboard interface |
+| **Application Logic** | Python 3.10+ | Core domain logic, tariff calculators, routing |
+| **Data Storage** | SQLite (PostgreSQL Ready) | Relational persistence with immediate transaction locking |
+| **Security & Auth** | bcrypt | Salted cryptographical password hashing |
+| **Analytics Engine** | Plotly Express & Pandas | Capacity utilization and revenue distribution charting |
+| **Reporting & Export** | OpenPyXL | Compliant dual-report `.xlsx` binary data generation |
+| **Quality Assurance**| Pytest | Automated mathematical unit tests for collisions and tariffs |
+
+---
+
+## 🚀 Quickstart & Local Installation
+
+### Prerequisites
+* Python 3.10 or higher
+* Git
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/habibqasimzade/hotel-hms-enterprise.git
 cd hotel-hms-enterprise
+```
 
-2. Set Up a Virtual Environment
+### 2. Set Up a Virtual Environment
+```bash
 # Windows
 python -m venv venv
 venv\Scripts\activate
@@ -160,42 +171,55 @@ venv\Scripts\activate
 # macOS / Linux
 python3 -m venv venv
 source venv/bin/activate
+```
 
-3. Install Dependencies
+### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-4. Execute Automated Unit Tests
+### 4. Execute Automated Unit Tests
 Verify mathematical collision logic and pricing integrity:
+```bash
 pytest
+```
 
-5. Launch the Enterprise Application
+### 5. Launch the Enterprise Application
+```bash
 streamlit run app.py
-Open your browser and navigate to http://localhost:8501 .
+```
+Open your browser and navigate to `http://localhost:8501`.
 
-🔑 Default Credentials
+---
+
+## 🔑 Default Credentials
+
 The platform initializes with a seeded demonstration tenant:
 
-Demonstration Hotel: Grand Resort & Spa (Code: GR01)
+* **Demonstration Hotel:** Grand Resort & Spa (Code: `GR01`)
+* **Manager Username:** `admin`
+* **Default Password:** `admin123`
 
-Manager Username: admin
+*New hotels and isolated tenant spaces can be instantiated autonomously via the "Register New Hotel" tab on the authentication portal.*
 
-Default Password: admin123
+---
 
-New hotels and isolated tenant spaces can be instantiated autonomously via the "Register New Hotel" tab on the authentication portal.
+## 🧪 Verification & Automated Testing
 
-🧪 Verification & Automated Testing
-The automated test suite in tests/test_core.py validates critical operational assertions:
+The automated test suite in `tests/test_core.py` validates critical operational assertions:
+1. **`test_collision_math_logic`**: Validates boundary-condition edge cases (adjacent dates vs. overlapping date spans).
+2. **`test_single_vs_double_pricing_calculation`**: Asserts dynamic policy calculation for single-occupant deductions and non-billable corporate voucher exemptions.
 
-test_collision_math_logic: Validates boundary-condition edge cases (adjacent dates vs. overlapping date spans).
+---
 
-test_single_vs_double_pricing_calculation: Asserts dynamic policy calculation for single-occupant deductions and non-billable corporate voucher exemptions.
+## 👤 Author & Architectural Contact
 
-👤 Author & Architectural Contact
-Habib Qasimzade  Instagram: @habibqasimzade ; Linkedin: linkedin.com/in/habibqasimzade
+**Habib Qasimzade**  
+*Entrepreneur | AI Business Development | AI & Data Analyst*  
+*İnstagram: @habibqasimzade | Linkedin: https://www.linkedin.com/in/habibqasimzade/
+* Developed as an enterprise-grade portfolio solution showcasing clean code architecture, domain-driven design, and financial analytics.
 
-Business & AI Product Architect | Hospitality Tech Specialist
+---
 
-Developed as an enterprise-grade portfolio solution showcasing clean code architecture, domain-driven design, and financial analytics.
-
-📄 License
-This project is open-source software licensed under the MIT License.
+## 📄 License
+This project is open-source software licensed under the [MIT License](LICENSE).
