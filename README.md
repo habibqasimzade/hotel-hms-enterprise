@@ -1,4 +1,4 @@
-# 🏨 Enterprise Multi-Tenant Hotel Property Management System (PMS)
+# 🏨 Enterprise Multi-Tenant Hotel Property Management System (HMS)
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework-Streamlit](https://img.shields.io/badge/Framework-Streamlit-FF4B4B.svg)](https://streamlit.io/)
