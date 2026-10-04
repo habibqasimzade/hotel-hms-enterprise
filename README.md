@@ -6,7 +6,7 @@
 [![Tests-Pytest%20Passing](https://img.shields.io/badge/Tests-Pytest%20Passing-success.svg)](https://docs.pytest.org/)
 [![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
 
-> Designed and engineered by **Həbib Qasımzadə**  
+> Designed and engineered by **Habib Qasimzade**  
 > *Translating real-world hospitality domain expertise into an enterprise-grade cloud operating system.*
 
 ---
@@ -15,7 +15,7 @@
 
 Small-to-midsize accommodation providers and resort properties frequently struggle with fragmented software stacks: disjointed spreadsheets for billing, uncoordinated communication with housekeeping teams, and vulnerability to double-booking (overbooking) anomalies during peak walk-in and OTA arrival hours.
 
-Drawing from hands-on front desk operational experience, this **Hotel Property Management System (PMS)** was engineered from the ground up to address these pain points. Built on a strict multi-tenant architecture, the platform enforces atomic reservation transactions, provides dynamic single vs. double occupancy rate engines, automates room turnover protocols, and computes executive-level hospitality decision metrics (**ADR, RevPAR, Real-Time Occupancy**).
+Drawing from hands-on front desk operational experience, this **Hotel Property Management System (HMS)** was engineered from the ground up to address these pain points. Built on a strict multi-tenant architecture, the platform enforces atomic reservation transactions, provides dynamic single vs. double occupancy rate engines, automates room turnover protocols, and computes executive-level hospitality decision metrics (**ADR, RevPAR, Real-Time Occupancy**).
 
 ---
 
@@ -216,7 +216,7 @@ The automated test suite in `tests/test_core.py` validates critical operational 
 
 **Habib Qasimzade**  
 *Entrepreneur | AI Business Development | AI & Data Analyst*  
-*İnstagram: @habibqasimzade | Linkedin: https://www.linkedin.com/in/habibqasimzade/
+*İnstagram:https://www.instagram.com/habibqasimzade/  |  Linkedin: https://www.linkedin.com/in/habibqasimzade/
 * Developed as an enterprise-grade portfolio solution showcasing clean code architecture, domain-driven design, and financial analytics.
 
 ---
