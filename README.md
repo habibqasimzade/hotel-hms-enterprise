@@ -5,6 +5,7 @@
 [![Database-SQLite%20%2F%20Postgres--Ready](https://img.shields.io/badge/Database-SQLite%20%7C%20Postgres--Ready-informational.svg)]()
 [![Tests-Pytest%20Passing](https://img.shields.io/badge/Tests-Pytest%20Passing-success.svg)](https://docs.pytest.org/)
 [![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hotel-hms-enterprise.streamlit.app)
 
 > Designed and engineered by **Habib Qasimzade**  
 > *Translating real-world hospitality domain expertise into an enterprise-grade cloud operating system.*
